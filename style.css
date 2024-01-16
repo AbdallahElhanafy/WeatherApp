@@ -18,11 +18,44 @@ body {
     font-size: 1.5rem;
 }
 
-.searchBox{
+.mainBox{
     background: rgba(255,255,255,0.1);
 }
 
 ::placeholder {
     color: white !important;
     opacity: 1 !important;
+}
+
+#weatherImage img {
+    width: 100%
+}
+
+#weatherImage {
+    width: 100px;
+}
+
+sup {
+    font-size: 1.7rem !important;
+
+}
+
+#weatherData h4,h6 {
+    padding: 0 0 0 5px !important;
+    margin: 0 0 0 5px !important;
+}
+
+.searchBox {
+    border-radius: 1rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    margin: 1rem;
+}
+
+#cityNameInput  {
+ outline: none !important;
+    border: none !important;
+}
+
+#currentCityName {
+    max-width: 15ch;
 }
