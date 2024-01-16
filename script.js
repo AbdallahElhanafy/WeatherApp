@@ -24,7 +24,7 @@ cityInput.addEventListener('keyup', function () {
 
 async function getWeather (query){
  let response =
-     await  fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${query}&days=3&aqi=no&alerts=no`)
+     await  fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${query}&days=3&aqi=no&alerts=no`)
     let data = await response.json()
     console.log(data)
     weatherImg.src = data.current.condition.icon
@@ -38,7 +38,7 @@ async function getWeather (query){
 
 async function getLocationWeather () {
     if (navigator.geolocation){
-        let result =  await fetch('http://ipinfo.io/197.54.7.187?token=a117ca4fe8503a')
+        let result =  await fetch('https://ipinfo.io/197.54.7.187?token=a117ca4fe8503a')
         let data = await result.json()
         console.log(data)
         getWeather(data.city)
