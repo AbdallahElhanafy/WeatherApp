@@ -72,7 +72,7 @@ async function getUserLocation () {
 }
 
 async function getUserWeather(position){
-    let result =  await fetch(`http://api.positionstack.com/v1/reverse?access_key=${mapApiKey}&query= ${position.coords.latitude},${position.coords.longitude}&limit=1`)
+    let result =  await fetch(`https://api.positionstack.com/v1/reverse?access_key=${mapApiKey}&query= ${position.coords.latitude},${position.coords.longitude}&limit=1`)
     let data = await result.json()
      let userCity = data.data[0].region
    console.log(userCity)
