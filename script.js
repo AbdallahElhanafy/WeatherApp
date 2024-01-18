@@ -60,17 +60,23 @@ async function getWeather (query){
 
     }
     twoDaysWeather.innerHTML = weatherBox;
-    $('#mainBox').animate({opacity:100}, 1000)
+    $('#mainBox').animate({opacity: 1}, 1000);
+
 }
 
 
 async function getUserLocation () {
-        if (navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(getUserWeather);
-        } else {
-            getWeather('Cairo')
-        }
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getUserWeather, onDecline);
+    }
 }
+
+function onDecline(error){
+    if(error.code === error.PERMISSION_DENIED ){
+        getWeather('Cairo')
+    }
+}
+
 
 async function getUserWeather(position){
     let userCity = ``
