@@ -1,5 +1,6 @@
+
 let apiKey = 'c1e786c40c694deb9a3143022241601'
-let mapsKey =`AIzaSyCahgn1sMr-thNtBUqlLbM4EZ3bjT-6CKg`
+
 let cityName = document.getElementById('currentCityName')
 let weatherImg = document.getElementById('weatherImage')
 let temperature = document.getElementById('temperature')
