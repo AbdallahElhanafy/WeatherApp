@@ -10,7 +10,7 @@ let humidity = document.getElementById('humidity')
 let windSpeed = document.getElementById('windSpeed')
 let cityInput = document.getElementById('cityNameInput')
 let twoDaysWeather = document.getElementById('twoDaysWeather')
-
+let placeHolder = document.getElementById('placeHolder')
 cityInput.value = ``
 
 
@@ -60,7 +60,10 @@ async function getWeather (query){
 
     }
     twoDaysWeather.innerHTML = weatherBox;
-    $('#mainBox').animate({opacity: 1}, 1000);
+    placeHolder.classList.replace('opacity-100', 'opacity-0', (
+        $('#mainBox').animate({opacity: 1}, 1000)
+    ))
+
 
 }
 
@@ -98,6 +101,11 @@ async function getUserWeather(position){
     } catch (error) {
         console.error(error);
     }
+
+
     getWeather(userCity)
+
+
+
 }
 getUserLocation()
