@@ -64,7 +64,7 @@ async function getWeather (query){
 
 async function getLocationWeather () {
 
-        let result =  await fetch('https://ipinfo.io/197.54.7.187?token=a117ca4fe8503a')
+        let result =  await fetch('https://ipinfo.io?token=a117ca4fe8503a')
         let data = await result.json()
         console.log(data)
         getWeather(data.city)
