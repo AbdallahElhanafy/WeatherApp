@@ -65,7 +65,6 @@ async function getWeather (query){
 
 
 async function getUserLocation () {
-
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition(getUserWeather);
         }
