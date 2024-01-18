@@ -1,5 +1,6 @@
 
-let apiKey = 'c1e786c40c694deb9a3143022241601'
+let mapApiKey = '77a8a99fd6d5734b5a0641aee451b318'
+let apiKey = `c1e786c40c694deb9a3143022241601`
 
 let cityName = document.getElementById('currentCityName')
 let weatherImg = document.getElementById('weatherImage')
@@ -59,19 +60,23 @@ async function getWeather (query){
 
     }
     twoDaysWeather.innerHTML = weatherBox;
+    $('#mainBox').animate({opacity:100}, 1000)
 }
 
 
-async function getLocationWeather () {
+async function getUserLocation () {
 
-        let result =  await fetch('https://ipinfo.io?token=a117ca4fe8503a')
-        let data = await result.json()
-        console.log(data)
-        getWeather(data.city)
-        $('#mainBox').animate({opacity:1},1000)
-        console.log('done')
+        if (navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(getUserWeather);
+        }
+}
 
-
+async function getUserWeather(position){
+    let result =  await fetch(`http://api.positionstack.com/v1/reverse?access_key=${mapApiKey}&query= ${position.coords.latitude},${position.coords.longitude}&limit=1`)
+    let data = await result.json()
+     let userCity = data.data[0].region
+   console.log(userCity)
+    getWeather(userCity)
 
 }
-getLocationWeather ()
+getUserLocation()
