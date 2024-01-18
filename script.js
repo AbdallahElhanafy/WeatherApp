@@ -67,15 +67,31 @@ async function getWeather (query){
 async function getUserLocation () {
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition(getUserWeather);
+        } else {
+            getWeather('Cairo')
         }
 }
 
 async function getUserWeather(position){
-    let result =  await fetch(`https://api.positionstack.com/v1/reverse?access_key=${mapApiKey}&query= ${position.coords.latitude},${position.coords.longitude}&limit=1`)
-    let data = await result.json()
-     let userCity = data.data[0].region
-   console.log(userCity)
-    getWeather(userCity)
+    let userCity = ``
 
+    const url = `https://trueway-geocoding.p.rapidapi.com/ReverseGeocode?location=${position.coords.latitude}%2C${position.coords.longitude}&language=en`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '8aed56df2dmshfd31ce55afc8d21p1d9e68jsn88b592b636e7',
+            'X-RapidAPI-Host': 'trueway-geocoding.p.rapidapi.com'
+        }
+    };
+
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result);
+        userCity = result.results[0].region
+    } catch (error) {
+        console.error(error);
+    }
+    getWeather(userCity)
 }
 getUserLocation()
